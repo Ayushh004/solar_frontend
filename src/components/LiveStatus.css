@@ -1,0 +1,130 @@
+.live-status {
+  max-width: 1400px;
+}
+
+.status-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin: 24px 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 12px;
+  border-left: 4px solid #3498db;
+}
+
+.info-item {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-item strong {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.info-item span {
+  color: #34495e;
+  font-weight: 500;
+}
+
+.status-online {
+  color: #27ae60 !important;
+  font-weight: 600 !important;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin: 32px 0;
+}
+
+.chart-container {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  height: 300px;
+}
+
+.chart-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.chart-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.data-section {
+  margin-top: 40px;
+}
+
+.data-section h3 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.status-normal {
+  color: #27ae60;
+  background: rgba(39, 174, 96, 0.1);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-good {
+  color: #2980b9;
+  background: rgba(41, 128, 185, 0.1);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-warning {
+  color: #e67e22;
+  background: rgba(230, 126, 34, 0.1);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-error {
+  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.1);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .chart-container {
+    height: 250px;
+  }
+  
+  .status-info {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
