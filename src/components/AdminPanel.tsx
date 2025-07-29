@@ -102,12 +102,12 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ onCityZoneUpdate }) => {
       <p>Configure your plant system parameters and settings.</p>
 
       <div className="admin-grid">
-        {/* Plant & Zones */}
-        <div className="admin-card">
-          <div className="admin-icon">🌱</div>
+        {/* Solar Plant Card */}
+        <div className="admin-card" id="solar-plant">
+          <div className="admin-icon">🌞</div>
           <h3>Solar Plant</h3>
           <form>
-            <div className="form-group">
+            <div className="form-group" id="city-location-plant">
               <label htmlFor="citySelect">City Location (Plant)</label>
               <select
                 id="citySelect"
@@ -121,7 +121,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ onCityZoneUpdate }) => {
               </select>
             </div>
 
-            <div className="form-group">
+            <div className="form-group" id="zone-sublocation">
               <label htmlFor="zoneSelect">Zone (Sublocation)</label>
               <select
                 id="zoneSelect"
@@ -159,12 +159,12 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ onCityZoneUpdate }) => {
           </form>
         </div>
 
-        {/* Machine & User Management */}
-        <div className="admin-card">
+        {/* Machine & User Management Card */}
+        <div className="admin-card" id="machine-user-management">
           <div className="admin-icon">🖥️</div>
           <h3>Machine & User Management</h3>
           <form>
-            <div className="form-group">
+            <div className="form-group" id="machine-count">
               <label htmlFor="machineCount">Machine Count</label>
               <input
                 type="number"
@@ -175,7 +175,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ onCityZoneUpdate }) => {
               />
             </div>
 
-            <div className="form-group">
+            <div className="form-group" id="user-creation">
               <label htmlFor="userCreation">User Creation</label>
               <select id="userCreation" defaultValue="enabled">
                 <option value="enabled">Enabled</option>
@@ -183,7 +183,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ onCityZoneUpdate }) => {
               </select>
             </div>
 
-            <div className="form-group">
+            <div className="form-group" id="access-level">
               <label htmlFor="accessLevel">Access Level</label>
               <select id="accessLevel" defaultValue="admin">
                 <option value="admin">Admin</option>
@@ -202,21 +202,21 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ onCityZoneUpdate }) => {
           </form>
         </div>
 
-        {/* Company & Fleet */}
-        <div className="admin-card">
+        {/* Company & Fleet Card */}
+        <div className="admin-card" id="company-fleet">
           <div className="admin-icon">🏢</div>
           <h3>Company & Fleet</h3>
           <form>
-            <div className="form-group">
+            <div className="form-group" id="company-name">
               <label htmlFor="companyName">Company Name</label>
               <input
                 type="text"
                 id="companyName"
-                defaultValue="STMicroelectronics"
+                defaultValue="XYZ company"
               />
             </div>
 
-            <div className="form-group">
+            <div className="form-group" id="fleet-control">
               <label htmlFor="fleetControl">Fleet Control</label>
               <select id="fleetControl" defaultValue="automatic">
                 <option value="automatic">Automatic</option>
@@ -224,7 +224,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ onCityZoneUpdate }) => {
               </select>
             </div>
 
-            <div className="form-group">
+            <div className="form-group" id="customer-details">
               <label htmlFor="customerDetails">Customer Details</label>
               <input
                 type="text"
@@ -243,12 +243,12 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ onCityZoneUpdate }) => {
           </form>
         </div>
 
-        {/* Schedules & Timing */}
-        <div className="admin-card">
+        {/* Schedules & Timing Card */}
+        <div className="admin-card" id="schedules-timing">
           <div className="admin-icon">⏰</div>
           <h3>Schedules & Timing</h3>
           <form>
-            <div className="form-group">
+            <div className="form-group" id="service-schedule">
               <label htmlFor="serviceSchedule">Service Schedule</label>
               <input
                 type="text"
@@ -257,7 +257,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ onCityZoneUpdate }) => {
               />
             </div>
 
-            <div className="form-group">
+            <div className="form-group" id="cycle-time">
               <label htmlFor="cycleTime">Cycle Time (minutes)</label>
               <input
                 type="number"
@@ -268,7 +268,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ onCityZoneUpdate }) => {
               />
             </div>
 
-            <div className="form-group">
+            <div className="form-group" id="schedule-mode">
               <label htmlFor="scheduleMode">Schedule Mode</label>
               <select id="scheduleMode" defaultValue="auto">
                 <option value="auto">Auto</option>
@@ -286,12 +286,12 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ onCityZoneUpdate }) => {
           </form>
         </div>
 
-        {/* Panel & Device Configuration */}
-        <div className="admin-card">
+        {/* Panel & Device Configuration Card */}
+        <div className="admin-card" id="panel-device-configuration">
           <div className="admin-icon">⚙️</div>
           <h3>Panel & Device Configuration</h3>
           <form>
-            <div className="form-group">
+            <div className="form-group" id="panel-configuration">
               <label htmlFor="panelConfig">Panel Configuration</label>
               <input
                 type="text"
@@ -300,7 +300,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ onCityZoneUpdate }) => {
               />
             </div>
 
-            <div className="form-group">
+            <div className="form-group" id="cycles-to-run">
               <label htmlFor="cycleToRun">Cycles to Run</label>
               <input
                 type="number"
@@ -311,7 +311,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ onCityZoneUpdate }) => {
               />
             </div>
 
-            <div className="form-group">
+            <div className="form-group" id="device-id">
               <label htmlFor="deviceId">Device ID</label>
               <input
                 type="text"

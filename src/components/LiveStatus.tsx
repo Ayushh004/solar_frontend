@@ -20,7 +20,7 @@ const LiveStatus: React.FC<LiveStatusProps> = ({ cityZone }) => {
   useEffect(() => {
     const charts: ChartJS[] = [];
 
-    // Charging Current Line Chart
+    // Charging Current Chart
     if (chargingCurrentRef.current) {
       const chargingCurrentChart = new ChartJS(chargingCurrentRef.current, {
         type: 'line',
@@ -43,38 +43,13 @@ const LiveStatus: React.FC<LiveStatusProps> = ({ cityZone }) => {
         },
         options: {
           responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: true,
-              position: 'top' as const,
-              labels: {
-                usePointStyle: true,
-                font: {
-                  weight: 600
-                }
-              }
-            }
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              grid: {
-                color: 'rgba(0, 0, 0, 0.1)'
-              }
-            },
-            x: {
-              grid: {
-                color: 'rgba(0, 0, 0, 0.1)'
-              }
-            }
-          }
+          maintainAspectRatio: false
         }
       });
       charts.push(chargingCurrentChart);
     }
 
-    // Battery Voltage Dial
+    // Battery Voltage Chart
     if (batteryVoltageRef.current) {
       const batteryVoltageValue = 75;
       const batteryVoltageChart = new ChartJS(batteryVoltageRef.current, {
@@ -84,7 +59,7 @@ const LiveStatus: React.FC<LiveStatusProps> = ({ cityZone }) => {
             data: [batteryVoltageValue, 100 - batteryVoltageValue],
             backgroundColor: ['#3498db', '#ecf0f1'],
             borderWidth: 0,
-            cutout: '80%'
+            cutout: '75%'
           }]
         },
         options: {
@@ -100,7 +75,7 @@ const LiveStatus: React.FC<LiveStatusProps> = ({ cityZone }) => {
           beforeDraw: (chart) => {
             const { ctx, width, height } = chart;
             ctx.save();
-            ctx.font = 'bold 28px Arial';
+            ctx.font = 'bold 20px Arial';
             ctx.fillStyle = '#3498db';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
@@ -112,7 +87,7 @@ const LiveStatus: React.FC<LiveStatusProps> = ({ cityZone }) => {
       charts.push(batteryVoltageChart);
     }
 
-    // LoRa Strength Bar Chart
+    // LoRa Signal Strength Chart
     if (loRaStrengthRef.current) {
       const loRaStrengthChart = new ChartJS(loRaStrengthRef.current, {
         type: 'bar',
@@ -135,27 +110,7 @@ const LiveStatus: React.FC<LiveStatusProps> = ({ cityZone }) => {
         },
         options: {
           responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: true,
-              position: 'top' as const
-            }
-          },
-          scales: {
-            y: {
-              min: -100,
-              max: 0,
-              grid: {
-                color: 'rgba(0, 0, 0, 0.1)'
-              }
-            },
-            x: {
-              grid: {
-                color: 'rgba(0, 0, 0, 0.1)'
-              }
-            }
-          }
+          maintainAspectRatio: false
         }
       });
       charts.push(loRaStrengthChart);
@@ -184,32 +139,7 @@ const LiveStatus: React.FC<LiveStatusProps> = ({ cityZone }) => {
         },
         options: {
           responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: true,
-              position: 'top' as const,
-              labels: {
-                usePointStyle: true,
-                font: {
-                  weight: 600
-                }
-              }
-            }
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              grid: {
-                color: 'rgba(0, 0, 0, 0.1)'
-              }
-            },
-            x: {
-              grid: {
-                color: 'rgba(0, 0, 0, 0.1)'
-              }
-            }
-          }
+          maintainAspectRatio: false
         }
       });
       charts.push(speedChart);
@@ -225,42 +155,30 @@ const LiveStatus: React.FC<LiveStatusProps> = ({ cityZone }) => {
       <h2>Live Status</h2>
       <p>Real-time monitoring of system parameters and performance metrics.</p>
 
-      <div className="status-info">
-        <div className="info-item">
-          <strong>City:</strong> <span>{cityZone.city || 'Not Selected'}</span>
-        </div>
-        <div className="info-item">
-          <strong>Zone:</strong> <span>{cityZone.zone || 'Not Selected'}</span>
-        </div>
-        <div className="info-item">
-          <strong>Status:</strong> <span className="status-online">Online</span>
-        </div>
-      </div>
-
       <div className="charts-grid">
         <div className="chart-container">
-          <div className="chart-title">Charging Current</div>
-          <canvas ref={chargingCurrentRef} height="200"></canvas>
+          <div className="chart-title" id="charging-current">Charging Current</div>
+          <canvas ref={chargingCurrentRef}></canvas>
         </div>
 
         <div className="chart-container">
-          <div className="chart-title">Battery Voltage</div>
-          <canvas ref={batteryVoltageRef} height="200"></canvas>
+          <div className="chart-title" id="battery-voltage">Battery Voltage</div>
+          <canvas ref={batteryVoltageRef}></canvas>
         </div>
 
         <div className="chart-container">
-          <div className="chart-title">LoRa Signal Strength</div>
-          <canvas ref={loRaStrengthRef} height="200"></canvas>
+          <div className="chart-title" id="lora-signal-strength">LoRa Signal Strength</div>
+          <canvas ref={loRaStrengthRef}></canvas>
         </div>
 
         <div className="chart-container">
-          <div className="chart-title">Cleaning Speed</div>
-          <canvas ref={speedRef} height="200"></canvas>
+          <div className="chart-title" id="cleaning-speed">Cleaning Speed</div>
+          <canvas ref={speedRef}></canvas>
         </div>
       </div>
 
       <div className="data-section">
-        <h3>System Parameters</h3>
+        <h3 id="system-parameters">System Parameters</h3>
         <table className="data-table">
           <thead>
             <tr>
@@ -270,56 +188,86 @@ const LiveStatus: React.FC<LiveStatusProps> = ({ cityZone }) => {
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr id="temperature">
               <td>Temperature</td>
               <td>35 °C</td>
               <td><span className="status-normal">Normal</span></td>
             </tr>
-            <tr>
-              <td>Battery Voltage</td>
-              <td>48 V</td>
-              <td><span className="status-normal">Normal</span></td>
-            </tr>
-            <tr>
+            <tr id="solar-panel-voltage">
               <td>Solar Panel Voltage</td>
               <td>12 V</td>
               <td><span className="status-normal">Normal</span></td>
             </tr>
-            <tr>
+            <tr id="average-current">
               <td>Average Current</td>
               <td>5.5 A</td>
               <td><span className="status-normal">Normal</span></td>
             </tr>
-            <tr>
-              <td>Running Current</td>
-              <td>6.2 A</td>
-              <td><span className="status-normal">Normal</span></td>
-            </tr>
-            <tr>
-              <td>Current Threshold</td>
-              <td>7 A</td>
-              <td><span className="status-normal">Normal</span></td>
-            </tr>
-            <tr>
-              <td>Voltage Threshold</td>
-              <td>50 V</td>
-              <td><span className="status-normal">Normal</span></td>
-            </tr>
-            <tr>
+            <tr id="battery-charge">
               <td>Battery Charge</td>
               <td>80 %</td>
               <td><span className="status-good">Good</span></td>
             </tr>
-            <tr>
-              <td>Self Charging</td>
-              <td>1.5 V</td>
-              <td><span className="status-normal">Normal</span></td>
-            </tr>
-            <tr>
-              <td>Connectivity</td>
-              <td>Good</td>
-              <td><span className="status-good">Connected</span></td>
-            </tr>
+             <tr>
+    <td>Temperature</td>
+    <td>35 °C</td>
+    <td><span className="status-normal">Normal</span></td>
+  </tr>
+  <tr>
+    <td>Solar Panel Voltage</td>
+    <td>12 V</td>
+    <td><span className="status-normal">Normal</span></td>
+  </tr>
+  <tr>
+    <td>Average Current</td>
+    <td>5.5 A</td>
+    <td><span className="status-normal">Normal</span></td>
+  </tr>
+  <tr>
+    <td>Battery Charge</td>
+    <td>80 %</td>
+    <td><span className="status-good">Good</span></td>
+  </tr>
+  <tr>
+    <td>Running Current</td>
+    <td>6.2 A</td>
+    <td><span className="status-normal">Normal</span></td>
+  </tr>
+  <tr>
+    <td>Current Threshold</td>
+    <td>7 A</td>
+    <td><span className="status-normal">Normal</span></td>
+  </tr>
+  <tr>
+    <td>Voltage Threshold</td>
+    <td>50 V</td>
+    <td><span className="status-normal">Normal</span></td>
+  </tr>
+  <tr>
+    <td>Self-Charging Voltage</td>
+    <td>1.5 V</td>
+    <td><span className="status-normal">Normal</span></td>
+  </tr>
+  <tr>
+    <td>Connectivity (LoRa Strength)</td>
+    <td>Good</td>
+    <td><span className="status-good">Connected</span></td>
+  </tr>
+  <tr>
+    <td>Wind Speed</td>
+    <td>12 km/h</td>
+    <td><span className="status-normal">Normal</span></td>
+  </tr>
+  <tr>
+    <td>Rain Sensor Status</td>
+    <td>No Rain</td>
+    <td><span className="status-normal">Normal</span></td>
+  </tr>
+  <tr>
+    <td>Error Code</td>
+    <td>0x00</td>
+    <td><span className="status-normal">Normal</span></td>
+    </tr>
           </tbody>
         </table>
       </div>

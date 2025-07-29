@@ -82,6 +82,38 @@
   border-radius: 2px;
 }
 
+
+.nav-search {
+  display: flex;
+  padding: 10px 16px;
+  gap: 8px;
+}
+
+.nav-search input {
+ flex: 1;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  outline: none;
+  background: white;  
+  color: black;
+}
+
+.nav-search button {
+  background: #3498db;
+  border: none;
+  border-radius: 6px;
+  padding: 6px;
+  cursor: pointer;
+  color: white;
+}
+
+.nav-search button:hover {
+  background: #2980b9;
+}
+
+
 @media (max-width: 768px) {
   .navigation {
     position: relative;

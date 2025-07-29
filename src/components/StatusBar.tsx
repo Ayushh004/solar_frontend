@@ -35,9 +35,7 @@ const StatusBar: React.FC = () => {
           </div>
         ))}
       </div>
-      <div className="status-info">
-        <span>Last Updated: {new Date().toLocaleTimeString()}</span>
-      </div>
+     
     </div>
   );
 };
