@@ -1,46 +1,50 @@
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Body & HTML */
 body, html {
-  height: 100%;
+  height: auto;               /* 100% ki jagah auto */
+  min-height: 100%;           /* ensure stretch */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
   background: #f5f7fa;
-  overflow: hidden;
+  overflow-x: hidden;         /* horizontal scroll avoid */
+  overflow-y: auto;           /* vertical scroll allow */
 }
 
+/* App Container */
 .app-container {
   display: flex;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;          /* viewport ke height tak stretch kare */
+  overflow: visible;          /* hidden remove */
+  flex-direction: row;
 }
 
+/* Main Content */
 .main-content {
   flex: 1;
   background: white;
   padding: 30px;
-  overflow-y: auto;
-  padding-bottom: 60px;
-  margin-left: 280px;
+  overflow-y: auto;           /* scroll allow */
+  padding-bottom: 60px;       /* status bar overlap ke liye space */
+  margin-left: 280px;         /* desktop ke liye sidebar space */
 }
 
 /* Scrollbar styling */
 .main-content::-webkit-scrollbar {
   width: 8px;
 }
-
 .main-content::-webkit-scrollbar-track {
   background: #f1f1f1;
   border-radius: 4px;
 }
-
 .main-content::-webkit-scrollbar-thumb {
   background: #c1c1c1;
   border-radius: 4px;
 }
-
 .main-content::-webkit-scrollbar-thumb:hover {
   background: #a1a1a1;
 }
@@ -52,28 +56,24 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   line-height: 1.2;
 }
-
 h2 {
   font-size: 28px;
   margin-bottom: 8px;
 }
-
 h3 {
   font-size: 22px;
   margin-bottom: 12px;
 }
-
 p {
   color: #7f8c8d;
   line-height: 1.6;
   margin-bottom: 20px;
 }
 
-/* Form styles */
+/* Form Styles */
 .form-group {
   margin-bottom: 20px;
 }
-
 label {
   display: block;
   font-weight: 600;
@@ -81,7 +81,6 @@ label {
   color: #2c3e50;
   margin-bottom: 6px;
 }
-
 input[type="text"],
 input[type="number"],
 select {
@@ -93,7 +92,6 @@ select {
   transition: all 0.3s ease;
   background: white;
 }
-
 input[type="text"]:focus,
 input[type="number"]:focus,
 select:focus {
@@ -102,7 +100,7 @@ select:focus {
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
-/* Button styles */
+/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -116,30 +114,26 @@ select:focus {
   transition: all 0.3s ease;
   text-decoration: none;
 }
-
 .btn-primary {
   background: #3498db;
   color: white;
 }
-
 .btn-primary:hover {
   background: #2980b9;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
 }
-
 .btn-success {
   background: #27ae60;
   color: white;
 }
-
 .btn-success:hover {
   background: #219a52;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
 }
 
-/* Card styles */
+/* Card Styles */
 .card {
   background: white;
   border-radius: 12px;
@@ -147,48 +141,45 @@ select:focus {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
 }
-
 .card:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Grid layouts */
+/* Grid Layouts */
 .grid-2 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 24px;
 }
-
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
-
 .grid-4 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 18px;
 }
 
-/* Responsive design */
+/* Responsive Design */
 @media (max-width: 768px) {
   .app-container {
     flex-direction: column;
   }
-  
+
   .main-content {
-    margin-left: 0;
+    margin-left: 0;        /* sidebar hide hone par margin hatao */
     padding: 20px;
+    overflow-y: auto;      /* scroll allow mobile par bhi */
   }
 }
 
-/* Animation utilities */
+/* Animations */
 .fade-in {
   animation: fadeIn 0.5s ease-in;
 }
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -200,7 +191,7 @@ select:focus {
   }
 }
 
-/* Chart container */
+/* Chart Container */
 .chart-container {
   position: relative;
   background: white;
@@ -209,7 +200,6 @@ select:focus {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   margin-bottom: 20px;
 }
-
 .chart-title {
   font-size: 16px;
   font-weight: 600;
@@ -217,7 +207,7 @@ select:focus {
   margin-bottom: 16px;
 }
 
-/* Table styles */
+/* Table Styles */
 .data-table {
   width: 100%;
   border-collapse: collapse;
@@ -227,14 +217,12 @@ select:focus {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   margin-top: 20px;
 }
-
 .data-table th,
 .data-table td {
   padding: 16px;
   text-align: left;
   border-bottom: 1px solid #e0e6ed;
 }
-
 .data-table th {
   background: #f8f9fa;
   font-weight: 600;
@@ -243,35 +231,24 @@ select:focus {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-
 .data-table tbody tr:hover {
   background: #f8f9fa;
 }
-
 .data-table tbody tr:last-child td {
   border-bottom: none;
 }
 
-
-/* For tablet */
+/* Font scaling (Tablet / Mobile) */
 @media (max-width: 1024px) {
   body {
     font-size: 15px;
   }
 }
-
-/* For mobile */
 @media (max-width: 768px) {
-  .main-content {
-    margin-left: 0;  
-
-  }
   body {
     font-size: 14px;
   }
 }
-
-/* For small phones */
 @media (max-width: 480px) {
   body {
     font-size: 13px;
