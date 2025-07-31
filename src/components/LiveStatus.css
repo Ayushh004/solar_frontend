@@ -147,3 +147,34 @@
     gap: 12px;
   }
 }
+
+/* For tablet */
+@media (max-width: 1024px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+/* For mobile */
+@media (max-width: 768px) {
+    .chart-container {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
+  .data-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  body {
+    font-size: 14px;
+  }
+}
+
+/* For small phones */
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+}

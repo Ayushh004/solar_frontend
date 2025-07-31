@@ -101,3 +101,30 @@
     font-size: 11px;
   }
 }
+
+
+/* For tablet */
+@media (max-width: 1024px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+/* For mobile */
+@media (max-width: 768px) {
+  .status-bar {
+    left: 0;   /* sidebar ke space ka remove */
+    height: auto;
+    flex-wrap: wrap;
+  }
+  body {
+    font-size: 14px;
+  }
+}
+
+/* For small phones */
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+}

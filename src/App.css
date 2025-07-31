@@ -251,3 +251,29 @@ select:focus {
 .data-table tbody tr:last-child td {
   border-bottom: none;
 }
+
+
+/* For tablet */
+@media (max-width: 1024px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+/* For mobile */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;  
+    padding: 16px;
+  }
+  body {
+    font-size: 14px;
+  }
+}
+
+/* For small phones */
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+}

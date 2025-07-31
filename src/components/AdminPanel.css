@@ -129,3 +129,28 @@
   flex: 1;
   justify-content: space-between;
 }
+
+/* For tablet */
+@media (max-width: 1024px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+/* For mobile */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+/* For small phones */
+@media (max-width: 480px) {
+  .admin-card {
+    padding: 12px;
+  }
+  body {
+    font-size: 13px;
+  }
+}
+
