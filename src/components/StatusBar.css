@@ -7,26 +7,27 @@
   border-top: 1px solid #bdc3c7;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 8px 16px;   /* height auto, padding se control */
+  justify-content: flex-start;
+  padding: 4px 8px;       /* Compact height */
   z-index: 1000;
   backdrop-filter: blur(10px);
-  flex-wrap: wrap;     /* multiple lines ke liye */
+  flex-wrap: wrap;
+  gap: 4px;               /* Reduce gap between badges */
 }
 
 .status-items {
   display: flex;
-  gap: 16px;
+  gap: 4px;
   flex-wrap: wrap;
 }
 
 .status-item {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: 16px;
-  font-size: 12px;
+  gap: 4px;
+  padding: 2px 6px;      /* Smaller padding */
+  border-radius: 12px;
+  font-size: 10px;       /* Smaller font */
   font-weight: 600;
   color: white;
   cursor: pointer;
@@ -36,17 +37,18 @@
 
 .status-item:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .status-indicator {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: currentColor;
   animation: pulse 2s infinite;
 }
 
+/* Status colors */
 .status-critical {
   background: #e74c3c;
 }
@@ -72,16 +74,24 @@
   }
 }
 
+/* Mobile adjustments */
 @media (max-width: 768px) {
   .status-bar {
     left: 0;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 4px;
+    gap: 2px;
   }
 
   .status-item {
-    font-size: 11px;
-    padding: 3px 8px;
+    font-size: 9px;
+    padding: 2px 5px;
+    gap: 3px;
+  }
+
+  .status-indicator {
+    width: 4px;
+    height: 4px;
   }
 }
