@@ -29,7 +29,7 @@ body, html {
   background: white;
   padding: 30px;
   overflow-y: auto;           /* scroll allow */
-  padding-bottom: 100px;       /* status bar overlap ke liye space */
+  padding-bottom: 140px;       /* status bar overlap ke liye space */
   margin-left: 280px;         /* desktop ke liye sidebar space */
 }
 
@@ -173,7 +173,7 @@ select:focus {
     margin-left: 0;
     padding: 20px;
     overflow-y: auto;
-    padding-bottom: 100px;  /* mobile par bhi bottom gap */
+    padding-bottom: 140px;  /* mobile par bhi bottom gap */
   }
 }
 
