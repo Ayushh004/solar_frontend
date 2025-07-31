@@ -113,10 +113,23 @@
 /* For mobile */
 @media (max-width: 768px) {
   .status-bar {
-    left: 0;   /* sidebar ke space ka remove */
-    height: auto;
+   height: auto;          /* automatic adjust */
+    padding: 4px 8px;
+    gap: 4px;
     flex-wrap: wrap;
   }
+    .status-item {
+    font-size: 10px;       /* font chhota */
+    padding: 3px 6px;      /* padding kam */
+    gap: 4px;              /* icon aur text ka gap kam */
+    border-radius: 12px;   /* thoda compact rounded */
+  }
+
+  .status-indicator {
+    width: 6px;            /* indicator chhota */
+    height: 6px;
+  }
+
   body {
     font-size: 14px;
   }
