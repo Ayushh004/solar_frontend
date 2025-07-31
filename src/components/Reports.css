@@ -1,6 +1,6 @@
 .reports {
   max-width: 1400px;
-  /* Page vertical scroll allow hoga automatically because container height flexible hai */
+  /* Page naturally vertical scroll karega */
 }
 
 .reports h2 {
@@ -46,9 +46,22 @@
 /* ----------- CHARTS ----------- */
 .chart-container {
   position: relative;
-  height: auto;        /* No fixed height */
+  background: white;
+  border-radius: 12px;
+  padding: 16px;       /* Reduced padding */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   margin-bottom: 16px;
-  overflow: visible;   /* No scrollbars for charts */
+  height: auto;        /* Auto height – no fixed size */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Chart canvas responsive */
+.chart-container canvas {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 220px;
 }
 
 /* ----------- SYSTEM REPORTS (cards) ----------- */
@@ -56,7 +69,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  overflow: visible;   /* No scrollbars for cards */
+  overflow: visible;
 }
 
 .report-item {
@@ -163,10 +176,14 @@
     padding: 10px 8px;
   }
 
-  /* Charts & System Reports remain no-scroll */
-  .chart-container,
-  .reports-list {
-    overflow: visible;
+  /* Charts padding and height smaller on mobile */
+  .chart-container {
+    padding: 8px;
+    margin-bottom: 12px;
+  }
+
+  .chart-container canvas {
+    max-height: 180px;
   }
 }
 
