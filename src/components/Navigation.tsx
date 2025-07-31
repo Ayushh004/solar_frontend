@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Settings, Activity, BarChart3, AlertTriangle, Search } from 'lucide-react';
+import { Settings, Activity, BarChart3, AlertTriangle, ChevronDown, Search } from 'lucide-react';
 import './Navigation.css';
 
 interface NavigationProps {
@@ -8,9 +8,10 @@ interface NavigationProps {
 }
 
 const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange }) => {
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [query, setQuery] = useState('');
 
-  // Tabs for side navigation
+  // Tabs for navigation
   const tabs = [
     { id: 'admin', label: 'Admin', icon: Settings },
     { id: 'live-status', label: 'Live Status', icon: Activity },
@@ -18,7 +19,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange }) => {
     { id: 'alerts', label: 'Alerts', icon: AlertTriangle },
   ];
 
-  // Mapping for Live Status System Parameters
+  // Search mapping (optional - keep as is)
   const parameterMap: Record<string, string> = {
     temperature: 'temperature',
     'solar panel voltage': 'solar-panel-voltage',
@@ -30,10 +31,10 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange }) => {
     if (query.trim()) {
       const searchKey = query.toLowerCase().trim();
 
-      // Check exact match
+      // Exact match
       let targetId = parameterMap[searchKey];
 
-      // If exact not found, try partial match
+      // Partial match
       if (!targetId) {
         const foundKey = Object.keys(parameterMap).find(key =>
           key.includes(searchKey)
@@ -55,44 +56,72 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange }) => {
   };
 
   return (
-    <nav className="navigation">
-      {/* Logo & Title */}
-      <div className="nav-header">
-        <h2>Solar Plant Monitor</h2>
-        <p>Control Dashboard</p>
-      </div>
+    <>
+      {/* Sidebar for Desktop */}
+      <nav className="navigation desktop-nav">
+        <div className="nav-header">
+          <h2>Solar Plant Monitor</h2>
+          <p>Control Dashboard</p>
+        </div>
 
-      {/* Search Bar */}
-      <div className="nav-search">
-        <input
-          type="text"
-          placeholder="Search parameter..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-        />
-        <button onClick={handleSearch}>
-          <Search size={16} />
+        {/* Search Bar in Desktop */}
+        <div className="nav-search">
+          <input
+            type="text"
+            placeholder="Search parameter..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+          />
+          <button onClick={handleSearch}>
+            <Search size={16} />
+          </button>
+        </div>
+
+        {/* Tabs */}
+        <div className="nav-tabs">
+          {tabs.map((tab) => {
+            const IconComponent = tab.icon;
+            return (
+              <div
+                key={tab.id}
+                className={`nav-tab ${activeTab === tab.id ? 'active' : ''}`}
+                onClick={() => onTabChange(tab.id)}
+              >
+                <IconComponent size={20} />
+                <span>{tab.label}</span>
+              </div>
+            );
+          })}
+        </div>
+      </nav>
+
+      {/* Dropdown for Mobile */}
+      <div className="mobile-dropdown">
+        <button
+          className="dropdown-btn"
+          onClick={() => setDropdownOpen(!isDropdownOpen)}
+        >
+          Admin <ChevronDown size={16} />
         </button>
+        {isDropdownOpen && (
+          <div className="dropdown-menu">
+            {tabs.map((tab) => (
+              <div
+                key={tab.id}
+                className={`dropdown-item ${activeTab === tab.id ? 'active' : ''}`}
+                onClick={() => {
+                  onTabChange(tab.id);
+                  setDropdownOpen(false);
+                }}
+              >
+                {tab.label}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
-
-      {/* Navigation Tabs */}
-      <div className="nav-tabs">
-        {tabs.map((tab) => {
-          const IconComponent = tab.icon;
-          return (
-            <div
-              key={tab.id}
-              className={`nav-tab ${activeTab === tab.id ? 'active' : ''}`}
-              onClick={() => onTabChange(tab.id)}
-            >
-              <IconComponent size={20} />
-              <span>{tab.label}</span>
-            </div>
-          );
-        })}
-      </div>
-    </nav>
+    </>
   );
 };
 

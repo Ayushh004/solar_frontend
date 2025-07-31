@@ -264,7 +264,7 @@ select:focus {
 @media (max-width: 768px) {
   .main-content {
     margin-left: 0;  
-    padding: 16px;
+
   }
   body {
     font-size: 14px;
