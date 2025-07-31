@@ -1,16 +1,14 @@
 .reports {
   max-width: 1400px;
+  /* Page vertical scroll allow hoga automatically because container height flexible hai */
 }
 
 .reports h2 {
-  font-size: 32px;      /* bada */
-  font-weight: 800;     /* bold */
-  text-transform: uppercase;  /* optional stylish */
+  font-size: 32px;
+  font-weight: 800;
+  text-transform: uppercase;
   margin-bottom: 8px;
 }
-
-
-
 
 .reports-grid {
   display: grid;
@@ -45,16 +43,20 @@
   padding-bottom: 12px;
 }
 
+/* ----------- CHARTS ----------- */
 .chart-container {
   position: relative;
-  height: 300px;
+  height: auto;        /* No fixed height */
   margin-bottom: 16px;
+  overflow: visible;   /* No scrollbars for charts */
 }
 
+/* ----------- SYSTEM REPORTS (cards) ----------- */
 .reports-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  overflow: visible;   /* No scrollbars for cards */
 }
 
 .report-item {
@@ -105,48 +107,82 @@
   font-weight: 600;
 }
 
+/* ----------- PERFORMANCE METRICS TABLE ----------- */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-top: 20px;
+}
+
+.data-table th,
+.data-table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #e0e6ed;
+}
+
+.data-table th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.data-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ----------- MOBILE SPECIFIC FIXES ----------- */
 @media (max-width: 768px) {
+  /* Reports grid stack vertically */
   .reports-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
-  .chart-container {
-    height: 250px;
+
+  /* Performance metrics table horizontal scroll only on mobile */
+  .data-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
   }
-  
-  .report-section {
-    padding: 20px;
+
+  .data-table th,
+  .data-table td {
+    font-size: 12px;
+    padding: 10px 8px;
+  }
+
+  /* Charts & System Reports remain no-scroll */
+  .chart-container,
+  .reports-list {
+    overflow: visible;
   }
 }
 
-
-/* For tablet */
+/* Tablet font scaling */
 @media (max-width: 1024px) {
   body {
     font-size: 15px;
   }
 }
 
-/* For mobile */
 @media (max-width: 768px) {
-   .chart-container {
-    overflow-x: auto;
-    max-width: 100%;
-  }
-
-
-  .data-table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
   body {
     font-size: 14px;
   }
 }
 
-/* For small phones */
 @media (max-width: 480px) {
   body {
     font-size: 13px;
