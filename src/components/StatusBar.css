@@ -3,15 +3,15 @@
   bottom: 0;
   left: 280px;
   right: 0;
-  height: 50px;
   background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
   border-top: 1px solid #bdc3c7;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24px;
+  padding: 8px 16px;   /* height auto, padding se control */
   z-index: 1000;
   backdrop-filter: blur(10px);
+  flex-wrap: wrap;     /* multiple lines ke liye */
 }
 
 .status-items {
@@ -23,9 +23,9 @@
 .status-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  border-radius: 20px;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 16px;
   font-size: 12px;
   font-weight: 600;
   color: white;
@@ -40,8 +40,8 @@
 }
 
 .status-indicator {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: currentColor;
   animation: pulse 2s infinite;
@@ -63,12 +63,6 @@
   background: #27ae60;
 }
 
-.status-info {
-  color: #7f8c8d;
-  font-size: 12px;
-  font-weight: 500;
-}
-
 @keyframes pulse {
   0%, 100% {
     opacity: 1;
@@ -81,63 +75,13 @@
 @media (max-width: 768px) {
   .status-bar {
     left: 0;
-    padding: 0 16px;
-    height: auto;
     flex-direction: column;
-    justify-content: center;
-    gap: 8px;
+    align-items: flex-start;
+    gap: 4px;
   }
-  
-  .status-items {
-    gap: 8px;
-  }
-  
+
   .status-item {
     font-size: 11px;
-    padding: 4px 8px;
-  }
-  
-  .status-info {
-    font-size: 11px;
-  }
-}
-
-
-/* For tablet */
-@media (max-width: 1024px) {
-  body {
-    font-size: 15px;
-  }
-}
-
-/* For mobile */
-@media (max-width: 768px) {
-  .status-bar {
-   height: auto;          /* automatic adjust */
-    padding: 4px 8px;
-    gap: 4px;
-    flex-wrap: wrap;
-  }
-    .status-item {
-    font-size: 10px;       /* font chhota */
-    padding: 3px 6px;      /* padding kam */
-    gap: 4px;              /* icon aur text ka gap kam */
-    border-radius: 12px;   /* thoda compact rounded */
-  }
-
-  .status-indicator {
-    width: 6px;            /* indicator chhota */
-    height: 6px;
-  }
-
-  body {
-    font-size: 14px;
-  }
-}
-
-/* For small phones */
-@media (max-width: 480px) {
-  body {
-    font-size: 13px;
+    padding: 3px 8px;
   }
 }
