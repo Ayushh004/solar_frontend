@@ -19,7 +19,15 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange }) => {
     { id: 'alerts', label: 'Alerts', icon: AlertTriangle },
   ];
 
-  // Search mapping (optional - keep as is)
+  // Map tab IDs to labels for dropdown button text
+  const tabLabels: Record<string, string> = {
+    admin: 'Admin',
+    'live-status': 'Live Status',
+    reports: 'Reports',
+    alerts: 'Alerts',
+  };
+
+  // Parameter map for search
   const parameterMap: Record<string, string> = {
     temperature: 'temperature',
     'solar panel voltage': 'solar-panel-voltage',
@@ -102,7 +110,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange }) => {
           className="dropdown-btn"
           onClick={() => setDropdownOpen(!isDropdownOpen)}
         >
-          Admin <ChevronDown size={16} />
+          {tabLabels[activeTab] || 'Admin'} <ChevronDown size={16} />
         </button>
         {isDropdownOpen && (
           <div className="dropdown-menu">
