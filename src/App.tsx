@@ -14,24 +14,24 @@ function App() {
     zone: null
   });
 
-  // Dynamic bottom padding for content
-  const [bottomPadding, setBottomPadding] = useState(100); // default value
+  // Dynamic bottom margin for content
+  const [bottomMargin, setBottomMargin] = useState(80); // Default
   const statusBarRef = useRef<HTMLDivElement>(null);
 
-  // Measure StatusBar height on mount & window resize
+  // Update margin based on StatusBar height
   useEffect(() => {
-    const updatePadding = () => {
+    const updateMargin = () => {
       if (statusBarRef.current) {
         const height = statusBarRef.current.offsetHeight;
-        setBottomPadding(height + 30); // 30px extra spacing
+        setBottomMargin(height + 20); // Extra 20px spacing
       }
     };
 
-    updatePadding(); // initial measure
-    window.addEventListener('resize', updatePadding);
+    updateMargin(); // Initial
+    window.addEventListener('resize', updateMargin);
 
     return () => {
-      window.removeEventListener('resize', updatePadding);
+      window.removeEventListener('resize', updateMargin);
     };
   }, []);
 
@@ -61,7 +61,7 @@ function App() {
       <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
       <main
         className="main-content"
-        style={{ paddingBottom: `${bottomPadding}px` }}
+        style={{ marginBottom: `${bottomMargin}px` }}
       >
         {renderContent()}
       </main>
