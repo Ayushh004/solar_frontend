@@ -9,7 +9,6 @@
   margin-bottom: 8px;
 }
 
-
 .alerts-summary {
   display: flex;
   gap: 20px;
@@ -187,18 +186,24 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
+/* BADGE FIX: Compact & Center aligned */
 .priority-badge,
 .status-badge {
-  padding: 4px 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 6px;
   border-radius: 6px;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  min-width: 50px;
+  text-align: center;
 }
 
-.priority-badge.critical,
-.status-badge.triggered {
+/* Priority colors */
+.priority-badge.critical {
   background: rgba(231, 76, 60, 0.1);
   color: #e74c3c;
 }
@@ -208,7 +213,12 @@
   color: #e67e22;
 }
 
-.priority-badge.normal,
+.priority-badge.normal {
+  background: rgba(39, 174, 96, 0.1);
+  color: #27ae60;
+}
+
+/* Status colors */
 .status-badge.normal,
 .status-badge.resolved {
   background: rgba(39, 174, 96, 0.1);
@@ -218,6 +228,11 @@
 .status-badge.active {
   background: rgba(52, 152, 219, 0.1);
   color: #3498db;
+}
+
+.status-badge.triggered {
+  background: rgba(231, 76, 60, 0.1);
+  color: #e74c3c;
 }
 
 .btn-small {
@@ -238,41 +253,48 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* MOBILE FIXES */
 @media (max-width: 768px) {
   .alerts-summary {
     flex-direction: column;
     gap: 16px;
   }
-  
+
   .alerts-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
+
   .alert-actions {
     flex-direction: column;
   }
-  
+
   .history-table-container {
-    overflow-x: auto;
+    overflow-x: auto; /* Horizontal scroll for table on mobile */
+  }
+
+  /* Table cells smaller on mobile */
+  .priority-badge,
+  .status-badge {
+    font-size: 9px;
+    min-width: 40px;
+    padding: 2px 4px;
   }
 }
 
-/* For tablet */
+/* Tablet font scaling */
 @media (max-width: 1024px) {
   body {
     font-size: 15px;
   }
 }
 
-/* For mobile */
 @media (max-width: 768px) {
   body {
     font-size: 14px;
   }
 }
 
-/* For small phones */
 @media (max-width: 480px) {
   body {
     font-size: 13px;
